@@ -39,13 +39,14 @@ class Main extends PluginBase implements Listener {
     public function onPreLogin(PlayerPreLoginEvent $event) {
 		$cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
 		$reason = $cfg->get("whitelist.reason");
+	        $title = $cfg->get("whitelist.title");
 		$player = $event->getPlayer();
 		$name = $player->getName();
 		
 		if(!$player->isWhitelisted($name)) {
 			$msg =
 				TF::BOLD . TF::GRAY . "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n" . 
-				TF::RESET . TF::RED . "                     Whitelisted\n" . 
+				TF::RESET . TF::RED . "          $title\n" . 
 				TF::RESET . TF::RED . "Why?" . TF::GOLD . $reason;
 			$player->kick("", $msg);
 		}
