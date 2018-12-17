@@ -2,6 +2,10 @@
 
 Customizable whitelist reason for PMMP
 
+[![](https://poggit.pmmp.io/shield.dl.total/CustomWhitelistReason)](https://poggit.pmmp.io/p/CustomWhitelistReason)
+
+[![](https://poggit.pmmp.io/shield.state/CustomWhitelistReason)](https://poggit.pmmp.io/p/CustomWhitelistReason)
+
 # Installation
 
 - To install the plugin download the .phar.
