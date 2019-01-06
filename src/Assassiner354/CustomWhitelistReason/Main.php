@@ -48,7 +48,7 @@ class Main extends PluginBase implements Listener {
 				TF::BOLD . TF::GRAY . "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n" . 
 				TF::RESET . TF::RED . "          $title\n" . 
 				TF::RESET . TF::RED . "Why?" . TF::GOLD . $reason;
-			$player->kick("", $msg);
+			$player->close("", $msg);
 		}
 	        if(!player->isBanned($name)) {
                         $msg =
