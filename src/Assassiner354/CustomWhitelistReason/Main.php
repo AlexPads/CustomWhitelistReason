@@ -55,7 +55,7 @@ class Main extends PluginBase implements Listener {
 				TF::BOLD . TF::GRAY . "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n" . 
 				TF::RESET . TF::RED . "          Whitelisted\n" . 
 				TF::RESET . TF::RED . "Why? Banned by admin"; //Make customizable
-			$player->kick("", $msg);
+			$player->close("", $msg);
                 }
 	}
 }
