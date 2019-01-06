@@ -1,6 +1,6 @@
 name: CustomWhitelistReason
 main: Assassiner354\CustomWhitelistReason\Main
 version: 1.0.4
-api: [3.2.0, 3.5.0]
+api: [3.0.0, 3.5.3]
 author: Assaasiner354/A354-PH
 website: http://github.com/A354-PH
