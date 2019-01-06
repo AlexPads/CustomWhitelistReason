@@ -50,7 +50,7 @@ class Main extends PluginBase implements Listener {
 				TF::RESET . TF::RED . "Why?" . TF::GOLD . $reason;
 			$player->close("", $msg);
 		}
-	        if(!player->isBanned($name)) {
+	        if(!$player->isBanned($name)) {
                         $msg =
 				TF::BOLD . TF::GRAY . "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n" . 
 				TF::RESET . TF::RED . "          Whitelisted\n" . 
