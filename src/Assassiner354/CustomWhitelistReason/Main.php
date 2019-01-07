@@ -43,10 +43,7 @@ class Main extends PluginBase implements Listener {
 		$name = $player->getName();
 		
 		if(!$player->isWhitelisted($name)) {
-			$msg =
-				TF::BOLD . TF::GRAY . "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n" . 
-				TF::RESET . TF::RED . "                     Whitelisted\n" . 
-				TF::RESET . TF::RED . "Why?" . TF::GOLD . $reason;
+			$msg = str_replace(["{reason}", "{{line}"], [$reason, "\n"], $cfg->get("whitelist.message"));
 			$player->close("", $msg);
 		}
 	}
