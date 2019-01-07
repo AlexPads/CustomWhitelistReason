@@ -45,8 +45,8 @@ class Main extends PluginBase implements Listener {
 	    
 		
 		if(!$player->isWhitelisted($name)) {
-			$whitelistMessage = str_replace(["{reason}", "{line}", "&"], [$reason, "\n", "§"], $cfg->get("whitelist.message"));
-			$whitelistMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("whitelist.reason")); //To-do see if this method works.
+			$whitelistedMessage = str_replace(["{reason}", "{line}", "&"], [$reason, "\n", "§"], $cfg->get("whitelist.message"));
+			$whitelistedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("whitelist.reason")); //To-do see if this method works.
 			$player->close("", $whitelistedMessage);
 		}
 	    //Custom banned system:
