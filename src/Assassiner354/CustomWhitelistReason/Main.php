@@ -56,9 +56,9 @@ class Main extends PluginBase implements Listener {
             $entry = $banEntry[strtolower($name)];
                 $reason = $entry->getReason();
                 if ($reason != null || $reason != "") {
-                       $bannedMessage = str_replace(["{line}", "&", "{reason}"], ["\n", "§", $reason], $cfg->get("banned-message")); 
+                       $bannedMessage = str_replace(["{line}", "&", "{reason}"], ["\n", "§", $reason], $cfg->get("banned.message")); 
 		} else {
-			$bannedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("no-banned-reason-message"));
+			$bannedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("no.banned.reason.message"));
 			$player->close("", $bannedMessage);
                 }
 	}
