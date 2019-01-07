@@ -1,4 +1,12 @@
 #Config File for CustomWhitelistReason
 #Made by Assassiner354
 
-whitelist.reason: "Put whitelist reason here"
+## Whitelist reason - Add it below. Here are the variables you can use for the whitelist reason below:
+## § - For color code.
+whitelist.reason: "§cServer currently in maintenance mode."
+
+## NEW: Whitelist message - Put your whitelist message below! Here are the variables you can use for the whitelist message:
+## {line} - New line.
+## {reason} Whitelist reason which is above, in which you can add to the whitelist message below to make life more easier.
+## § - For color code.
+whitelist.message: "§cServer currently whitelisted!{line}§bReason: §3{reason}"
