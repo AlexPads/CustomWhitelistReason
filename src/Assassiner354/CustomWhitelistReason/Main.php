@@ -43,7 +43,8 @@ class Main extends PluginBase implements Listener {
 		$name = $player->getName();
 		
 		if(!$player->isWhitelisted($name)) {
-			$msg = str_replace(["{reason}", "{{line}"], [$reason, "\n"], $cfg->get("whitelist.message"));
+			$msg = str_replace(["{reason}", "{line}", "&"], [$reason, "\n", "§"], $cfg->get("whitelist.message"));
+			$msg = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("whitelist.reason")); //To-do see if this method works.
 			$player->close("", $msg);
 		}
 	}
