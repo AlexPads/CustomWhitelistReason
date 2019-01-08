@@ -50,10 +50,10 @@ class Main extends PluginBase implements Listener {
 			$player->close("", $whitelistedMessage);
 		}
 	    //Custom banned system:
-	         if(!$player->isBanned($name)) {
-	    $banList = $player->getServer()->getNameBans();
+	     $banList = $player->getServer()->getNameBans();
+	        if ($banList->isBanned(strtolower($player->getName()))) {
 	    $banEntry = $banList->getEntries();
-            $entry = $banEntry[strtolower($name)];
+            $entry = $banEntry[strtolower($player->getName())];
                 $reason = $entry->getReason();
                 if ($reason != null || $reason != "") {
                        $bannedMessage = str_replace(["{line}", "&", "{reason}"], ["\n", "§", $reason], $cfg->get("banned.message")); 
