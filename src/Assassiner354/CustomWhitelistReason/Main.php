@@ -36,7 +36,7 @@ class Main extends PluginBase implements Listener {
         $this->saveDefaultConfig();
         $this->getResource("config.yml");
     }    
-    public function onPreLogin(PlayerPreLoginEvent $event) { //TODO! Fix the internal server error when a unwhitelisted player joins!
+    public function onPreLogin(PlayerPreLoginEvent $event) { 
 		$cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
 		$reason = $cfg->get("whitelist.reason");
 	    	
