@@ -50,6 +50,9 @@ class Main extends PluginBase implements Listener {
         if(!$player->isWhitelisted($name)){
           $whitelistedMessage = str_replace(["{reason}", "{line}", "&"], [$reason, "\n", "§"], $cfg->get("whitelist.message"));
           $whitelistedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("whitelist.reason"));
+		
+          $event->setKickMessage($whitelistedMessage);
+		
           $player->kick("", $whitelistedMessage);
           return true;
         }
@@ -63,6 +66,9 @@ class Main extends PluginBase implements Listener {
             $bannedMessage = str_replace(["{line}", "&", "{reason}"], ["\n", "§", $reason], $cfg->get("banned.message")); 
           }else{
             $bannedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("no.banned.reason.message"));
+		  
+            $event->setKickMessage($whitelistedMessage);
+		
             $player->kick("", $bannedMessage);
           }
           return true;
