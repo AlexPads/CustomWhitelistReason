@@ -67,7 +67,7 @@ class Main extends PluginBase implements Listener {
           }else{
             $bannedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("no.banned.reason.message"));
 		  
-            $event->setKickMessage($whitelistedMessage);
+            $event->setKickMessage($bannedMessage);
 		
             $player->kick("", $bannedMessage);
           }
