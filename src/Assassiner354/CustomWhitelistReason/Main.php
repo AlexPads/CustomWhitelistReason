@@ -22,6 +22,7 @@ namespace Assassiner354\CustomWhitelistReason;
 
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerPreLoginEvent;
+use pocketmine\event\player\PlayerKickEvent; //TO-DO: Make use of this event!
 
 use pocketmine\plugin\PluginBase;
 
@@ -48,7 +49,7 @@ class Main extends PluginBase implements Listener {
 	    
         if(!$player->isWhitelisted($name)){
           $whitelistedMessage = str_replace(["{reason}", "{line}", "&"], [$reason, "\n", "§"], $cfg->get("whitelist.message"));
-          $whitelistedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("whitelist.reason")); //To-do see if this method works.
+          $whitelistedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("whitelist.reason"));
           $player->kick("", $whitelistedMessage);
           return true;
         }
