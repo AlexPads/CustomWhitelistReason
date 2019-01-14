@@ -51,7 +51,7 @@ class Main extends PluginBase implements Listener {
           $whitelistedMessage = str_replace(["{reason}", "{line}", "&"], [$reason, "\n", "§"], $cfg->get("whitelist.message"));
           $whitelistedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("whitelist.reason"));
         }else{
-          $event->setKickMsssage($whitelistedMessage);
+          $event->setKickMessage($whitelistedMessage);
           $event->setCancelled(true);
         }
 
