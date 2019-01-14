@@ -1,4 +1,6 @@
-<?php #Plugin by Assassiner354
+<?php 
+
+# [Plugin] by Assassiner354
 
 /**
  * Copyright 2018 Assassiner354
@@ -18,49 +20,51 @@
  
 namespace Assassiner354\CustomWhitelistReason;
 
-use pocketmine\plugin\PluginBase;
-
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerPreLoginEvent;
+
+use pocketmine\plugin\PluginBase;
 
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as TF;
 
 class Main extends PluginBase implements Listener {
 	
-	public function onEnable(){
+    public function onEnable() : void{
         $this->getLogger()->info("Custom Whitelist Reason enabled by Assassiner354");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
 
         @mkdir($this->getDataFolder());
         $this->saveDefaultConfig();
         $this->getResource("config.yml");
-    }    
-    public function onPreLogin(PlayerPreLoginEvent $event) { 
-		$cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
-		$reason = $cfg->get("whitelist.reason");
+    }
+
+    public function onPreLogin(PlayerPreLoginEvent $event){ 
+        $cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+        $reason = $cfg->get("whitelist.reason");
 	    	
-		$player = $event->getPlayer();
-		$name = $player->getName();
+        $player = $event->getPlayer();
+        $name = $player->getName();
 	    
-		
-		if(!$player->isWhitelisted($name)) {
-			$whitelistedMessage = str_replace(["{reason}", "{line}", "&"], [$reason, "\n", "§"], $cfg->get("whitelist.message"));
-			$whitelistedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("whitelist.reason")); //To-do see if this method works.
-			$player->kick("", $whitelistedMessage);
-		}
-	    //Custom banned system:
-	     $banList = $player->getServer()->getNameBans();
-	        if ($banList->isBanned(strtolower($player->getName()))) {
-	    $banEntry = $banList->getEntries();
-            $entry = $banEntry[strtolower($player->getName())];
-                $reason = $entry->getReason();
-                if ($reason != null || $reason != "") {
-                       $bannedMessage = str_replace(["{line}", "&", "{reason}"], ["\n", "§", $reason], $cfg->get("banned.message")); 
-		} else {
-			$bannedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("no.banned.reason.message"));
-			$player->kick("", $bannedMessage);
-                }
-                return true;
-	}
+        if(!$player->isWhitelisted($name)){
+          $whitelistedMessage = str_replace(["{reason}", "{line}", "&"], [$reason, "\n", "§"], $cfg->get("whitelist.message"));
+          $whitelistedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("whitelist.reason")); //To-do see if this method works.
+          $player->kick("", $whitelistedMessage);
+          return true;
+        }
+
+        $banList = $player->getServer()->getNameBans();
+        if($banList->isBanned(strtolower($player->getName()))){
+          $banEntry = $banList->getEntries();
+          $entry = $banEntry[strtolower($player->getName())];
+          $reason = $entry->getReason();
+          if($reason != null || $reason != ""){
+            $bannedMessage = str_replace(["{line}", "&", "{reason}"], ["\n", "§", $reason], $cfg->get("banned.message")); 
+          }else{
+            $bannedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("no.banned.reason.message"));
+            $player->kick("", $bannedMessage);
+          }
+          return true;
+        }
+    }
 }
