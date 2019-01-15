@@ -1,0 +1,23 @@
+#Config File for CustomWhitelistReason
+#Made by Assassiner354
+
+## Whitelist reason - Add it below. Here are the variables you can use for the whitelist reason below:
+## § - For color code.
+whitelist.reason: "§cServer currently in maintenance mode."
+
+## NEW: Whitelist message - Put your whitelist message below! Here are the variables you can use for the whitelist message:
+## {line} - New line.
+## {reason} Whitelist reason which is above, in which you can add to the whitelist message below to make life more easier.
+## § - For color code.
+whitelist.message: "§cServer currently whitelisted!{line}§bReason: §3{reason}"
+
+
+### NEW: BANNED MESSAGE AND BANNED REASONS SECTION BELOW:
+
+## NEW: Banned message - Put your banned message below (When a banned player tries to join the server) Here are the variables for the banned message.
+## {line} - New lne.
+## {reason} - When a user get's banned for a specific reason, it'll display by using {reason} variable.
+## & - For color code.
+
+banned.message: "&cYou have been banned.{line}&bReason: &3{reason}" ##Ban message for the reason only.
+no.banned.reason.message: "&cYou have been banned!" ##Without the ban reason.
