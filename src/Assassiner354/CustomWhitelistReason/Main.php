@@ -47,13 +47,15 @@ class Main extends PluginBase implements Listener {
         $player = $event->getPlayer();
         $name = $player->getName();
 	    
-        if(!$player->isWhitelisted($name)){
-          $whitelistedMessage = str_replace(["{reason}", "{line}", "&"], [$reason, "\n", "§"], $cfg->get("whitelist.message"));
-          $whitelistedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("whitelist.reason"));
-        }else{
-          $event->setKickMessage($whitelistedMessage);
-          $event->setCancelled(true);
-        }
+        if($player->isWhitelisted($name)){
+		//im not quite shure why this would be there lol you don't need the else here becuse with the "!" it is saying if the player 
+		//isnt whitelisted so the else would be if they are and you had defined the variable in a place above where it couldnt be reached :)
+		//Fixed by saltypixelDevz!
+		$whitelistedMessage = str_replace(["{reason}", "{line}", "&"], [$reason, "\n", "§"], $cfg->get("whitelist.message"));
+        	$whitelistedMessage = str_replace(["{line}", "&"], ["\n", "§"], $cfg->get("whitelist.reason"));
+        	$event->setKickMessage($whitelistedMessage);
+        	$event->setCancelled(true);
+	}
 
         $banList = $player->getServer()->getNameBans();
         if($banList->isBanned(strtolower($player->getName()))){
